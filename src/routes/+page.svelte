@@ -106,14 +106,17 @@
 
 	const currentYear = new Date().getFullYear();
 	const heroFrameCount = 121;
+	const heroPreloadBehind = 2;
+	const heroPreloadAhead = 12;
 	const heroFrames = Array.from({ length: heroFrameCount }, (_, index) => {
 		const frameNumber = String(index + 1).padStart(3, '0');
-		return `/hero-frames/frame-${frameNumber}.jpg`;
+		return `/hero-frames-v2/frame-${frameNumber}.webp`;
 	});
 
 	let mobileNavOpen = $state(false);
 	let heroSection: HTMLElement | null = null;
 	let currentHeroFrame = $state(0);
+	let targetHeroFrame = $state(0);
 
 	onMount(() => {
 		if (!heroSection) {
@@ -124,7 +127,92 @@
 		let prefersReducedMotion = motionQuery.matches;
 		let frameId = 0;
 		let destroyed = false;
-		let preloadTimer = 0;
+		let warmupTimer = 0;
+		const loadedHeroFrames = new Set<number>([0]);
+		const loadingHeroFrames = new Set<number>();
+		const pendingHeroImages = new Map<number, HTMLImageElement>();
+
+		const preloadFrame = (frameIndex: number) => {
+			if (
+				frameIndex < 0 ||
+				frameIndex >= heroFrameCount ||
+				loadedHeroFrames.has(frameIndex) ||
+				loadingHeroFrames.has(frameIndex)
+			) {
+				return;
+			}
+
+			const image = new Image();
+			let settled = false;
+
+			loadingHeroFrames.add(frameIndex);
+			pendingHeroImages.set(frameIndex, image);
+			image.decoding = 'async';
+
+			const settle = (didLoad: boolean) => {
+				if (settled) {
+					return;
+				}
+
+				settled = true;
+				loadingHeroFrames.delete(frameIndex);
+				pendingHeroImages.delete(frameIndex);
+
+				if (!didLoad) {
+					return;
+				}
+
+				loadedHeroFrames.add(frameIndex);
+
+				if (frameIndex === targetHeroFrame) {
+					currentHeroFrame = frameIndex;
+				}
+			};
+
+			image.onload = () => settle(true);
+			image.onerror = () => settle(false);
+			image.src = heroFrames[frameIndex];
+
+			if (typeof image.decode === 'function') {
+				image.decode().then(() => settle(true)).catch(() => {});
+			}
+		};
+
+		const preloadFrameWindow = (centerFrame: number) => {
+			for (
+				let frameIndex = centerFrame - heroPreloadBehind;
+				frameIndex <= centerFrame + heroPreloadAhead;
+				frameIndex += 1
+			) {
+				preloadFrame(frameIndex);
+			}
+		};
+
+		let nextWarmFrame = heroPreloadAhead + 1;
+
+		const warmRemainingFrames = () => {
+			if (destroyed || prefersReducedMotion) {
+				return;
+			}
+
+			for (let count = 0; count < 4 && nextWarmFrame < heroFrameCount; count += 1) {
+				preloadFrame(nextWarmFrame);
+				nextWarmFrame += 1;
+			}
+
+			if (nextWarmFrame < heroFrameCount) {
+				warmupTimer = window.setTimeout(warmRemainingFrames, 120);
+			}
+		};
+
+		const updateHeroFrame = (nextFrame: number) => {
+			targetHeroFrame = nextFrame;
+			preloadFrameWindow(nextFrame);
+
+			if (loadedHeroFrames.has(nextFrame)) {
+				currentHeroFrame = nextFrame;
+			}
+		};
 
 		const syncFrameToScroll = () => {
 			if (!heroSection || prefersReducedMotion) {
@@ -136,6 +224,7 @@
 
 			if (scrollableDistance <= 0) {
 				currentHeroFrame = 0;
+				targetHeroFrame = 0;
 				return;
 			}
 
@@ -154,8 +243,8 @@
 				heroFrameCount - 1
 			);
 
-			if (nextFrame !== currentHeroFrame) {
-				currentHeroFrame = nextFrame;
+			if (nextFrame !== targetHeroFrame) {
+				updateHeroFrame(nextFrame);
 			}
 		};
 
@@ -173,22 +262,28 @@
 
 			if (prefersReducedMotion) {
 				currentHeroFrame = 0;
+				targetHeroFrame = 0;
+				window.clearTimeout(warmupTimer);
+				return;
 			}
+
+			preloadFrameWindow(targetHeroFrame);
+			warmupTimer = window.setTimeout(warmRemainingFrames, 180);
 		};
 
 		motionQuery.addEventListener('change', handleMotionPreference);
+		preloadFrameWindow(0);
 		frameId = window.requestAnimationFrame(animationLoop);
-		preloadTimer = window.setTimeout(() => {
-			for (const frame of heroFrames) {
-				const image = new Image();
-				image.src = frame;
-			}
-		}, 0);
+
+		if (!prefersReducedMotion) {
+			warmupTimer = window.setTimeout(warmRemainingFrames, 180);
+		}
 
 		return () => {
 			destroyed = true;
 			window.cancelAnimationFrame(frameId);
-			window.clearTimeout(preloadTimer);
+			window.clearTimeout(warmupTimer);
+			pendingHeroImages.clear();
 			motionQuery.removeEventListener('change', handleMotionPreference);
 		};
 	});
