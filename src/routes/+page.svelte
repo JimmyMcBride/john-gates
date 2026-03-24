@@ -299,10 +299,10 @@
 
 <div class="overflow-x-clip">
 	<header
-		class="fixed inset-x-0 top-0 z-50 border-b border-border-subtle bg-surface-page/85 supports-[backdrop-filter]:bg-surface-page/70 supports-[backdrop-filter]:backdrop-blur-xl"
+		class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-action-primary/92 supports-[backdrop-filter]:bg-action-primary/84 supports-[backdrop-filter]:backdrop-blur-xl"
 	>
 		<Container tag="nav" class="flex h-[var(--ds-layout-nav-height)] items-center justify-between font-display tracking-tight">
-			<a href="#top" class="text-2xl font-semibold text-text-accent">John Gates</a>
+			<a href="#top" class="text-2xl font-semibold text-text-on-action">John Gates</a>
 
 			<div class="hidden items-center gap-8 md:flex">
 				{#each navLinks as link}
@@ -310,22 +310,22 @@
 						href={link.href}
 						class={`pb-1 text-base transition-all ${
 							link.highlight
-								? 'border-b-2 border-action-primary font-bold text-text-accent'
-								: 'font-medium text-text-muted hover:text-text-accent'
+								? 'border-b-2 border-white font-bold text-text-on-action'
+								: 'font-medium text-white/72 hover:text-text-on-action'
 						}`}
 					>
 						{link.label}
 					</a>
 				{/each}
 
-				<Button href="#contact" size="sm">
+				<Button href="#contact" size="sm" variant="secondary">
 					Get a Quote
 				</Button>
 			</div>
 
 			<button
 				type="button"
-				class="inline-flex items-center justify-center text-text-accent md:hidden"
+				class="inline-flex items-center justify-center text-text-on-action md:hidden"
 				aria-label={mobileNavOpen ? 'Close navigation' : 'Open navigation'}
 				aria-expanded={mobileNavOpen}
 				onclick={() => (mobileNavOpen = !mobileNavOpen)}
@@ -337,19 +337,19 @@
 		</Container>
 
 		{#if mobileNavOpen}
-			<div class="border-t border-border-subtle bg-surface-page/95 md:hidden">
+			<div class="border-t border-white/10 bg-action-primary/96 md:hidden">
 				<Container class="flex flex-col gap-5 py-6">
 					{#each navLinks as link}
 						<a
 							href={link.href}
-							class="font-display text-xl text-text-accent"
+							class="font-display text-xl text-text-on-action"
 							onclick={() => (mobileNavOpen = false)}
 						>
 							{link.label}
 						</a>
 					{/each}
 
-					<Button href="#contact" size="sm" class="w-fit" onclick={() => (mobileNavOpen = false)}>
+					<Button href="#contact" size="sm" variant="secondary" class="w-fit" onclick={() => (mobileNavOpen = false)}>
 						Get a Quote
 					</Button>
 				</Container>
@@ -369,12 +369,12 @@
 						fetchpriority="high"
 						decoding="async"
 					/>
-					<div class="absolute inset-0 bg-gradient-to-r from-surface-page/95 via-surface-page/55 to-transparent"></div>
+					<div class="absolute inset-0 bg-gradient-to-r from-[#fff1d6]/68 via-[#f3d9a6]/20 to-transparent"></div>
 				</div>
 
 				<Container class="relative z-10">
 					<div class="max-w-2xl">
-						<span class="ds-eyebrow mb-6 inline-block">Established 1974</span>
+						<span class="ds-eyebrow mb-6 inline-block">Established 1981</span>
 						<h1 class="ds-display-copy max-w-[14ch] font-display text-text-accent italic">
 							Custom cabinetry built the old-fashioned way.
 						</h1>
@@ -413,7 +413,7 @@
 					<div
 						class="absolute -bottom-8 -right-2 hidden max-w-[240px] rounded-lg bg-action-tertiary p-8 shadow-xl lg:block"
 					>
-						<p class="mb-2 font-display text-4xl italic text-text-on-tertiary">50 Years</p>
+						<p class="mb-2 font-display text-4xl italic text-text-on-tertiary">45 Years</p>
 						<p class="text-sm uppercase tracking-[0.18em] text-text-on-tertiary/80">
 							of master construction excellence
 						</p>
@@ -423,7 +423,7 @@
 				<div class="space-y-8">
 					<SectionHeader
 						title="A lifetime in the trade"
-						intro="John Gates has spent 50 years in construction, with the last two decades focused on custom cabinetry. That kind of time in the trade teaches you what lasts and what does not."
+						intro="John Gates has spent 45 years in construction, with the last two decades focused on custom cabinetry. That kind of time in the trade teaches you what lasts and what does not."
 						class="max-w-xl"
 					/>
 					<p class="text-lg leading-relaxed text-text-muted">
@@ -599,7 +599,7 @@
 					John Gates Master Cabinetry
 				</p>
 				<p class="mt-2 text-[10px] tracking-[0.24em] text-text-accent/75">
-					&copy; {currentYear} John Gates Master Cabinetry. Built with care since 1974.
+					&copy; {currentYear} John Gates Master Cabinetry. Built with care since 1981.
 				</p>
 			</div>
 
