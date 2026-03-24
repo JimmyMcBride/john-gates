@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { Button, Card, Container, Field, SectionHeader } from '$lib';
+	import { onMount } from "svelte";
+	import { Button, Card, Container, Field, SectionHeader } from "$lib";
 
 	type NavLink = {
 		label: string;
@@ -27,81 +27,75 @@
 	};
 
 	const navLinks: NavLink[] = [
-		{ label: 'Portfolio', href: '#portfolio', highlight: true },
-		{ label: 'Process', href: '#process' },
-		{ label: 'About', href: '#about' },
-		{ label: 'Contact', href: '#contact' }
+		{ label: "Portfolio", href: "#portfolio", highlight: true },
+		{ label: "Process", href: "#process" },
+		{ label: "About", href: "#about" },
+		{ label: "Contact", href: "#contact" },
 	];
 
 	const valueCards: ValueCard[] = [
 		{
-			icon: 'architecture',
-			title: 'Built with care',
-			copy:
-				'Clean lines, tight fits, and hardware that feels right. The small things are the job.'
+			icon: "architecture",
+			title: "Built with care",
+			copy: "Clean lines, tight fits, and hardware that feels right. The small things are the job.",
 		},
 		{
-			icon: 'handshake',
-			title: 'Easy to work with',
-			copy:
-				'You get straight answers, practical suggestions, and a builder who listens before he starts cutting.'
+			icon: "handshake",
+			title: "Easy to work with",
+			copy: "You get straight answers, practical suggestions, and a builder who listens before he starts cutting.",
 		},
 		{
-			icon: 'verified',
-			title: 'Years on the tools',
-			copy:
-				'Fifty years in construction changes how you build. It has to look good, but it also has to hold up.'
-		}
+			icon: "verified",
+			title: "Years on the tools",
+			copy: "Fifty years in construction changes how you build. It has to look good, but it also has to hold up.",
+		},
 	];
 
 	const featuredPrimary: FeaturedWork = {
-		title: 'The Oak Minimalist',
-		category: 'Modern',
+		title: "The Oak Minimalist",
+		category: "Modern",
 		image:
-			'https://lh3.googleusercontent.com/aida-public/AB6AXuApU0_8_GgW2z4-uWYXfx4TkzVdWVWI_wF8vFUaOlHyxgECDBNt8_tsjvscHFOGoWHEBliqI5sVo-mRmZCCR3EVGrZTgy5kZFfFNHaGAXBKXyrjqUBo2TfYohtLNzs6RGE8mswre9LkxiaO4A_r_rWXeK3a32iwOE-jv67mlJcbR-gBme_Hk_TlmZpuwNbrM6tRUSORRhFkOgxLNFkTXRG4_MMlff8LhSq-ATaVz1UhqjGf5nIhxgwXwJuTPbV_7yLexDVL1yUIlUZ5',
-		alt: 'Modern minimalist kitchen with light oak cabinetry and floating shelves, clean lines and natural morning light'
+			"https://lh3.googleusercontent.com/aida-public/AB6AXuApU0_8_GgW2z4-uWYXfx4TkzVdWVWI_wF8vFUaOlHyxgECDBNt8_tsjvscHFOGoWHEBliqI5sVo-mRmZCCR3EVGrZTgy5kZFfFNHaGAXBKXyrjqUBo2TfYohtLNzs6RGE8mswre9LkxiaO4A_r_rWXeK3a32iwOE-jv67mlJcbR-gBme_Hk_TlmZpuwNbrM6tRUSORRhFkOgxLNFkTXRG4_MMlff8LhSq-ATaVz1UhqjGf5nIhxgwXwJuTPbV_7yLexDVL1yUIlUZ5",
+		alt: "Modern minimalist kitchen with light oak cabinetry and floating shelves, clean lines and natural morning light",
 	};
 
 	const featuredSecondary: FeaturedWork[] = [
 		{
-			title: 'Cherry Wood Heritage',
-			category: 'Traditional',
+			title: "Cherry Wood Heritage",
+			category: "Traditional",
 			image:
-				'https://lh3.googleusercontent.com/aida-public/AB6AXuDKPcZeCxrZ3ntXo1fc_qGQTAHBvLUq_54BG5RiRti_VLquCZaZCn5x6B0seqDrZ7QQjEikd2i0sKfirfCbVIi8hN8lcGWqel7k87BEmlpQLF0NOpqI7owxj36EAdpgoh5DGJ1wEzcQ9N8rwJb9I-zvWc7nlqJVVt6LazZfaqyOBvFXwACkrgeivjtiKWB1PGmMNHXCK9qzLi_USjE4RI_cYsxYHL4pbfb4iWjqMjDb9nBMxG2AAhHW2vxSPkuRlzMkkG_NuLOth44z',
-			alt: 'Traditional kitchen detail showing dark stained cherry wood cabinets with ornate crown molding and brass hardware'
+				"https://lh3.googleusercontent.com/aida-public/AB6AXuDKPcZeCxrZ3ntXo1fc_qGQTAHBvLUq_54BG5RiRti_VLquCZaZCn5x6B0seqDrZ7QQjEikd2i0sKfirfCbVIi8hN8lcGWqel7k87BEmlpQLF0NOpqI7owxj36EAdpgoh5DGJ1wEzcQ9N8rwJb9I-zvWc7nlqJVVt6LazZfaqyOBvFXwACkrgeivjtiKWB1PGmMNHXCK9qzLi_USjE4RI_cYsxYHL4pbfb4iWjqMjDb9nBMxG2AAhHW2vxSPkuRlzMkkG_NuLOth44z",
+			alt: "Traditional kitchen detail showing dark stained cherry wood cabinets with ornate crown molding and brass hardware",
 		},
 		{
-			title: 'Reclaimed Pine Vanity',
-			category: 'Rustic',
+			title: "Reclaimed Pine Vanity",
+			category: "Rustic",
 			image:
-				'https://lh3.googleusercontent.com/aida-public/AB6AXuBfvHO03eHmyxmzE3USvEP7uxioRMHsXdEhpE65WvsiOn7GAV7vsAx8j1jdu8oPBTA2peu19mw3dXjjEmhIzCocBMejh97hOjE2VehhvnvbEDEKE369SsIGtNn2r9b2WLJ-KMXeMBAuuZpcfV122BLTg6rSA1BzMWOwTgkSe51y8fxdqy4c_ha99HZ_XMH2xAg0g5c5AqtOGyb_NqAa8PSW6LBLAic3Q5RTwAzkC0_mGc6-ItYaDpMdiyWMrd3x9YL1PsrhhcS0epD6',
-			alt: 'Rustic hand-crafted vanity in a cabin setting made from reclaimed timber with visible wood grain and texture'
-		}
+				"https://lh3.googleusercontent.com/aida-public/AB6AXuBfvHO03eHmyxmzE3USvEP7uxioRMHsXdEhpE65WvsiOn7GAV7vsAx8j1jdu8oPBTA2peu19mw3dXjjEmhIzCocBMejh97hOjE2VehhvnvbEDEKE369SsIGtNn2r9b2WLJ-KMXeMBAuuZpcfV122BLTg6rSA1BzMWOwTgkSe51y8fxdqy4c_ha99HZ_XMH2xAg0g5c5AqtOGyb_NqAa8PSW6LBLAic3Q5RTwAzkC0_mGc6-ItYaDpMdiyWMrd3x9YL1PsrhhcS0epD6",
+			alt: "Rustic hand-crafted vanity in a cabin setting made from reclaimed timber with visible wood grain and texture",
+		},
 	];
 
 	const processSteps: ProcessStep[] = [
 		{
-			title: 'Talk it through',
-			copy:
-				'We go over the room, the way you use it, and what is not working now. Then we figure out a better plan.'
+			title: "Talk it through",
+			copy: "We go over the room, the way you use it, and what is not working now. Then we figure out a better plan.",
 		},
 		{
-			title: 'Build it right',
-			copy:
-				'Each piece is built with solid materials, careful measurements, and the kind of patience this work takes.'
+			title: "Build it right",
+			copy: "Each piece is built with solid materials, careful measurements, and the kind of patience this work takes.",
 		},
 		{
-			title: 'Finish on site',
-			copy:
-				'Final fit and installation happen with the same care as the shop work, so everything lands the way it should.'
-		}
+			title: "Finish on site",
+			copy: "Final fit and installation happen with the same care as the shop work, so everything lands the way it should.",
+		},
 	];
 
 	const footerLinks: NavLink[] = [
-		{ label: 'Privacy Policy', href: '#' },
-		{ label: 'Terms of Service', href: '#' },
-		{ label: 'Instagram', href: '#' },
-		{ label: 'LinkedIn', href: '#' }
+		{ label: "Privacy Policy", href: "#" },
+		{ label: "Terms of Service", href: "#" },
+		{ label: "Instagram", href: "#" },
+		{ label: "LinkedIn", href: "#" },
 	];
 
 	const currentYear = new Date().getFullYear();
@@ -109,7 +103,7 @@
 	const heroPreloadBehind = 2;
 	const heroPreloadAhead = 12;
 	const heroFrames = Array.from({ length: heroFrameCount }, (_, index) => {
-		const frameNumber = String(index + 1).padStart(3, '0');
+		const frameNumber = String(index + 1).padStart(3, "0");
 		return `/hero-frames-v2/frame-${frameNumber}.webp`;
 	});
 
@@ -123,7 +117,7 @@
 			return;
 		}
 
-		const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+		const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 		let prefersReducedMotion = motionQuery.matches;
 		let frameId = 0;
 		let destroyed = false;
@@ -147,7 +141,7 @@
 
 			loadingHeroFrames.add(frameIndex);
 			pendingHeroImages.set(frameIndex, image);
-			image.decoding = 'async';
+			image.decoding = "async";
 
 			const settle = (didLoad: boolean) => {
 				if (settled) {
@@ -173,8 +167,11 @@
 			image.onerror = () => settle(false);
 			image.src = heroFrames[frameIndex];
 
-			if (typeof image.decode === 'function') {
-				image.decode().then(() => settle(true)).catch(() => {});
+			if (typeof image.decode === "function") {
+				image
+					.decode()
+					.then(() => settle(true))
+					.catch(() => {});
 			}
 		};
 
@@ -195,7 +192,11 @@
 				return;
 			}
 
-			for (let count = 0; count < 4 && nextWarmFrame < heroFrameCount; count += 1) {
+			for (
+				let count = 0;
+				count < 4 && nextWarmFrame < heroFrameCount;
+				count += 1
+			) {
 				preloadFrame(nextWarmFrame);
 				nextWarmFrame += 1;
 			}
@@ -236,11 +237,11 @@
 
 			const sectionProgress = Math.min(
 				Math.max(-rect.top / scrollableDistance, 0),
-				1
+				1,
 			);
 			const nextFrame = Math.min(
 				Math.round(sectionProgress * (heroFrameCount - 1)),
-				heroFrameCount - 1
+				heroFrameCount - 1,
 			);
 
 			if (nextFrame !== targetHeroFrame) {
@@ -271,7 +272,7 @@
 			warmupTimer = window.setTimeout(warmRemainingFrames, 180);
 		};
 
-		motionQuery.addEventListener('change', handleMotionPreference);
+		motionQuery.addEventListener("change", handleMotionPreference);
 		preloadFrameWindow(0);
 		frameId = window.requestAnimationFrame(animationLoop);
 
@@ -284,7 +285,7 @@
 			window.cancelAnimationFrame(frameId);
 			window.clearTimeout(warmupTimer);
 			pendingHeroImages.clear();
-			motionQuery.removeEventListener('change', handleMotionPreference);
+			motionQuery.removeEventListener("change", handleMotionPreference);
 		};
 	});
 </script>
@@ -301,8 +302,13 @@
 	<header
 		class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-action-primary-deep supports-[backdrop-filter]:bg-action-primary-deep/92 supports-[backdrop-filter]:backdrop-blur-xl"
 	>
-		<Container tag="nav" class="flex h-[var(--ds-layout-nav-height)] items-center justify-between font-display tracking-tight">
-			<a href="#top" class="text-2xl font-semibold text-text-on-action">John Gates</a>
+		<Container
+			tag="nav"
+			class="flex h-[var(--ds-layout-nav-height)] items-center justify-between font-display tracking-tight"
+		>
+			<a href="#top" class="text-2xl font-semibold text-text-on-action"
+				>John Gates</a
+			>
 
 			<div class="hidden items-center gap-8 md:flex">
 				{#each navLinks as link}
@@ -310,8 +316,8 @@
 						href={link.href}
 						class={`pb-1 text-base transition-all ${
 							link.highlight
-								? 'border-b-2 border-white font-bold text-text-on-action'
-								: 'font-medium text-white/72 hover:text-text-on-action'
+								? "border-b-2 border-white font-bold text-text-on-action"
+								: "font-medium text-white/72 hover:text-text-on-action"
 						}`}
 					>
 						{link.label}
@@ -326,12 +332,12 @@
 			<button
 				type="button"
 				class="inline-flex items-center justify-center text-text-on-action md:hidden"
-				aria-label={mobileNavOpen ? 'Close navigation' : 'Open navigation'}
+				aria-label={mobileNavOpen ? "Close navigation" : "Open navigation"}
 				aria-expanded={mobileNavOpen}
 				onclick={() => (mobileNavOpen = !mobileNavOpen)}
 			>
 				<span class="material-symbols-outlined text-[2rem]">
-					{mobileNavOpen ? 'close' : 'menu'}
+					{mobileNavOpen ? "close" : "menu"}
 				</span>
 			</button>
 		</Container>
@@ -349,7 +355,13 @@
 						</a>
 					{/each}
 
-					<Button href="#contact" size="sm" variant="secondary" class="w-fit" onclick={() => (mobileNavOpen = false)}>
+					<Button
+						href="#contact"
+						size="sm"
+						variant="secondary"
+						class="w-fit"
+						onclick={() => (mobileNavOpen = false)}
+					>
 						Get a Quote
 					</Button>
 				</Container>
@@ -359,7 +371,9 @@
 
 	<main id="top">
 		<section bind:this={heroSection} class="relative h-[220vh]">
-			<div class="sticky top-0 flex min-h-screen items-center overflow-hidden pt-20">
+			<div
+				class="sticky top-0 flex min-h-screen items-center overflow-hidden pt-20"
+			>
 				<div class="absolute inset-0">
 					<img
 						class="h-full w-full object-cover"
@@ -369,23 +383,31 @@
 						fetchpriority="high"
 						decoding="async"
 					/>
-					<div class="absolute inset-0 bg-gradient-to-r from-[#fff1d6]/86 via-[#f3d9a6]/38 to-transparent"></div>
+					<div
+						class="absolute inset-0 bg-gradient-to-r from-[#fff1d6]/86 via-[#f3d9a6]/38 to-transparent"
+					></div>
 				</div>
 
 				<Container class="relative z-10">
 					<div class="max-w-2xl">
 						<span class="ds-eyebrow mb-6 inline-block">Established 1981</span>
-						<h1 class="ds-display-copy max-w-[14ch] font-display text-text-accent italic">
+						<h1
+							class="ds-display-copy max-w-[14ch] font-display text-text-accent italic"
+						>
 							Custom cabinetry built the old-fashioned way.
 						</h1>
-						<p class="ds-intro-copy mt-8 max-w-xl font-semibold text-text-muted">
-							Kitchens, built-ins, vanities, and finish work made with care, experience,
-							and a close eye for fit.
+						<p
+							class="ds-intro-copy mt-8 max-w-xl font-semibold text-text-muted"
+						>
+							Kitchens, built-ins, vanities, and finish work made with care,
+							experience, and a close eye for fit.
 						</p>
 						<div class="mt-10 flex flex-col gap-4 sm:flex-row">
 							<Button href="#contact" size="lg" class="group shadow-button">
 								Talk About Your Project
-								<span class="material-symbols-outlined transition-transform group-hover:translate-x-1">
+								<span
+									class="material-symbols-outlined transition-transform group-hover:translate-x-1"
+								>
 									arrow_forward
 								</span>
 							</Button>
@@ -398,23 +420,32 @@
 			</div>
 		</section>
 
-		<section id="about" class="bg-surface-section py-[var(--ds-layout-section-y)]">
+		<section
+			id="about"
+			class="bg-surface-section py-[var(--ds-layout-section-y)]"
+		>
 			<Container class="grid grid-cols-1 items-center gap-16 md:grid-cols-2">
 				<div class="relative">
-					<div class="aspect-[4/5] overflow-hidden rounded-lg shadow-[var(--ds-shadow-card-hover)]">
-							<img
-								class="h-full w-full object-cover"
-								src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOHvPav_rdd3G2jS0RCN3nhD5dzZV74cAL5c6QdLXycz896KnHOIXrDVNLWX4omEnu4m_nsKvueQY9DKXt_QT2TJV7OsgDg--ZHCyM9aoPmPxrSJ5PaRbHp3QSm0DOFYdXSY5w4zapg5QPw9-HNP3XV9QM-FPN3lcA-egYuvnK8PAxoX571O44xjVTUEGpaeaevxlFxRiKVlWhzp9V4BUnhUMJ0tmCiTrDSxfrNwVfTnH9rjNtkf3XBuWqKcFNa1-nNRr8cRhd7bOR"
-								alt="Close-up of a craftsman's hands meticulously marking wood with a traditional pencil and square in a sunlit workshop"
-								loading="lazy"
-								decoding="async"
-							/>
+					<div
+						class="aspect-[4/5] overflow-hidden rounded-lg shadow-[var(--ds-shadow-card-hover)]"
+					>
+						<img
+							class="h-full w-full object-cover"
+							src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOHvPav_rdd3G2jS0RCN3nhD5dzZV74cAL5c6QdLXycz896KnHOIXrDVNLWX4omEnu4m_nsKvueQY9DKXt_QT2TJV7OsgDg--ZHCyM9aoPmPxrSJ5PaRbHp3QSm0DOFYdXSY5w4zapg5QPw9-HNP3XV9QM-FPN3lcA-egYuvnK8PAxoX571O44xjVTUEGpaeaevxlFxRiKVlWhzp9V4BUnhUMJ0tmCiTrDSxfrNwVfTnH9rjNtkf3XBuWqKcFNa1-nNRr8cRhd7bOR"
+							alt="Close-up of a craftsman's hands meticulously marking wood with a traditional pencil and square in a sunlit workshop"
+							loading="lazy"
+							decoding="async"
+						/>
 					</div>
 					<div
 						class="absolute -bottom-8 -right-2 hidden max-w-[240px] rounded-lg bg-action-tertiary p-8 shadow-xl lg:block"
 					>
-						<p class="mb-2 font-display text-4xl italic text-text-on-tertiary">45 Years</p>
-						<p class="text-sm uppercase tracking-[0.18em] text-text-on-tertiary/80">
+						<p class="mb-2 font-display text-4xl italic text-text-on-tertiary">
+							45 Years
+						</p>
+						<p
+							class="text-sm uppercase tracking-[0.18em] text-text-on-tertiary/80"
+						>
 							of master construction excellence
 						</p>
 					</div>
@@ -427,11 +458,13 @@
 						class="max-w-xl"
 					/>
 					<p class="text-lg leading-relaxed text-text-muted">
-						He works closely with homeowners from the first conversation through the final
-						install, keeping the process clear and the work honest.
+						He works closely with homeowners from the first conversation through
+						the final install, keeping the process clear and the work honest.
 					</p>
 					<div class="pt-4">
-						<div class="flex items-center gap-4 font-display text-xl italic text-text-accent">
+						<div
+							class="flex items-center gap-4 font-display text-xl italic text-text-accent"
+						>
 							<span class="h-px w-12 bg-border-default"></span>
 							Good work should feel solid the day it goes in and ten years later.
 						</div>
@@ -442,23 +475,36 @@
 
 		<section class="bg-surface-muted py-[var(--ds-layout-section-y)]">
 			<Container>
-				<SectionHeader title="Why people hire John" align="center" class="mb-16" />
+				<SectionHeader
+					title="Why people hire John"
+					align="center"
+					class="mb-16"
+				/>
 				<div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-				{#each valueCards as card}
-					<Card>
-						{#snippet icon()}
-							<span class="material-symbols-outlined text-3xl">{card.icon}</span>
-						{/snippet}
-						<h3 class="mb-4 font-display text-2xl text-text-accent">{card.title}</h3>
-						<p class="leading-relaxed text-text-muted">{card.copy}</p>
-					</Card>
-				{/each}
+					{#each valueCards as card}
+						<Card>
+							{#snippet icon()}
+								<span class="material-symbols-outlined text-3xl"
+									>{card.icon}</span
+								>
+							{/snippet}
+							<h3 class="mb-4 font-display text-2xl text-text-accent">
+								{card.title}
+							</h3>
+							<p class="leading-relaxed text-text-muted">{card.copy}</p>
+						</Card>
+					{/each}
 				</div>
 			</Container>
 		</section>
 
-		<section id="portfolio" class="bg-surface-section py-[var(--ds-layout-section-y)]">
-			<Container class="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+		<section
+			id="portfolio"
+			class="bg-surface-section pb-[calc(var(--ds-layout-section-y)+10rem)] pt-[var(--ds-layout-section-y)]"
+		>
+			<Container
+				class="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end"
+			>
 				<SectionHeader
 					title="Featured Works"
 					intro="A few recent spaces, each built around the way the home is actually used."
@@ -471,7 +517,9 @@
 			</Container>
 
 			<Container class="grid grid-cols-1 gap-6 md:h-[800px] md:grid-cols-12">
-				<article class="group relative overflow-hidden rounded-lg md:col-span-8">
+				<article
+					class="group relative overflow-hidden rounded-lg md:col-span-8"
+				>
 					<img
 						class="h-[26rem] w-full object-cover transition-transform duration-700 group-hover:scale-105 md:h-full"
 						src={featuredPrimary.image}
@@ -479,17 +527,25 @@
 						loading="lazy"
 						decoding="async"
 					/>
-					<div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent p-8">
-						<span class="mb-2 inline-block rounded bg-action-accent px-3 py-1 text-[10px] uppercase tracking-[0.24em] text-white">
+					<div
+						class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent p-8"
+					>
+						<span
+							class="mb-2 inline-block rounded bg-action-accent px-3 py-1 text-[10px] uppercase tracking-[0.24em] text-white"
+						>
 							{featuredPrimary.category}
 						</span>
-						<h3 class="font-display text-2xl italic text-white">{featuredPrimary.title}</h3>
+						<h3 class="font-display text-2xl italic text-white">
+							{featuredPrimary.title}
+						</h3>
 					</div>
 				</article>
 
 				<div class="space-y-6 md:col-span-4 md:flex md:flex-col">
 					{#each featuredSecondary as project}
-						<article class="group relative h-[18rem] overflow-hidden rounded-lg md:h-auto md:flex-1">
+						<article
+							class="group relative h-[18rem] overflow-hidden rounded-lg md:h-auto md:flex-1"
+						>
 							<img
 								class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
 								src={project.image}
@@ -497,11 +553,17 @@
 								loading="lazy"
 								decoding="async"
 							/>
-							<div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent p-6">
-								<span class="mb-2 inline-block rounded bg-action-accent px-3 py-1 text-[10px] uppercase tracking-[0.24em] text-white">
+							<div
+								class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent p-6"
+							>
+								<span
+									class="mb-2 inline-block rounded bg-action-accent px-3 py-1 text-[10px] uppercase tracking-[0.24em] text-white"
+								>
 									{project.category}
 								</span>
-								<h3 class="font-display text-xl italic text-white">{project.title}</h3>
+								<h3 class="font-display text-xl italic text-white">
+									{project.title}
+								</h3>
 							</div>
 						</article>
 					{/each}
@@ -509,7 +571,10 @@
 			</Container>
 		</section>
 
-		<section id="process" class="bg-surface-accent py-[var(--ds-layout-section-y)]">
+		<section
+			id="process"
+			class="bg-surface-accent pb-[var(--ds-layout-section-y)] pt-[calc(var(--ds-layout-section-y))]"
+		>
 			<Container>
 				<SectionHeader
 					eyebrow="How We Work"
@@ -525,13 +590,17 @@
 					></div>
 
 					{#each processSteps as step, index}
-						<article class="relative z-10 flex flex-col items-center p-8 text-center">
+						<article
+							class="relative z-10 flex flex-col items-center p-8 text-center"
+						>
 							<div
 								class="mb-8 flex h-12 w-12 items-center justify-center rounded-full bg-action-primary font-display text-xl text-text-on-action"
 							>
 								{index + 1}
 							</div>
-							<h3 class="mb-4 font-display text-2xl italic text-text-accent">{step.title}</h3>
+							<h3 class="mb-4 font-display text-2xl italic text-text-accent">
+								{step.title}
+							</h3>
 							<p class="max-w-sm text-text-muted">{step.copy}</p>
 						</article>
 					{/each}
@@ -539,10 +608,17 @@
 			</Container>
 		</section>
 
-		<section id="contact" class="bg-surface-section py-[var(--ds-layout-section-y)]">
+		<section
+			id="contact"
+			class="bg-surface-section py-[var(--ds-layout-section-y)]"
+		>
 			<div class="mx-auto max-w-4xl px-6 text-center sm:px-8 lg:px-16">
-				<div class="mb-8 inline-flex items-center justify-center rounded-full bg-action-tertiary-soft/10 p-4">
-					<span class="material-symbols-outlined text-4xl text-action-tertiary">edit_note</span>
+				<div
+					class="mb-8 inline-flex items-center justify-center rounded-full bg-action-tertiary-soft/10 p-4"
+				>
+					<span class="material-symbols-outlined text-4xl text-action-tertiary"
+						>edit_note</span
+					>
 				</div>
 				<SectionHeader
 					title="Ready to get started?"
@@ -557,11 +633,7 @@
 				>
 					<div>
 						<label class="sr-only" for="name">Your Name</label>
-						<Field
-							id="name"
-							name="name"
-							placeholder="Your Name"
-						/>
+						<Field id="name" name="name" placeholder="Your Name" />
 					</div>
 					<div>
 						<label class="sr-only" for="email">Email Address</label>
@@ -573,7 +645,9 @@
 						/>
 					</div>
 					<div>
-						<label class="sr-only" for="project">Tell us about your project</label>
+						<label class="sr-only" for="project"
+							>Tell us about your project</label
+						>
 						<Field
 							as="textarea"
 							id="project"
@@ -582,7 +656,11 @@
 							placeholder="Tell me a little about the job"
 						/>
 					</div>
-					<Button type="submit" size="lg" class="mt-8 w-full text-sm uppercase tracking-[0.24em]">
+					<Button
+						type="submit"
+						size="lg"
+						class="mt-8 w-full text-sm uppercase tracking-[0.24em]"
+					>
 						Request a Quote
 					</Button>
 				</form>
@@ -595,17 +673,23 @@
 			class="flex flex-col items-center justify-between gap-8 py-12 text-center text-sm uppercase tracking-[0.2em] text-text-accent md:flex-row md:text-left"
 		>
 			<div>
-				<p class="font-display text-lg normal-case tracking-normal text-text-accent">
+				<p
+					class="font-display text-lg normal-case tracking-normal text-text-accent"
+				>
 					John Gates Master Cabinetry
 				</p>
 				<p class="mt-2 text-[10px] tracking-[0.24em] text-text-accent/75">
-					&copy; {currentYear} John Gates Master Cabinetry. Built with care since 1981.
+					&copy; {currentYear} John Gates Master Cabinetry. Built with care since
+					1981.
 				</p>
 			</div>
 
 			<div class="flex flex-wrap items-center justify-center gap-8">
 				{#each footerLinks as link}
-					<a href={link.href} class="text-text-muted hover:text-text-accent hover:opacity-100">
+					<a
+						href={link.href}
+						class="text-text-muted hover:text-text-accent hover:opacity-100"
+					>
 						{link.label}
 					</a>
 				{/each}
