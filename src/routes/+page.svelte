@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { Button, Card, Container, Field, SectionHeader } from '$lib';
 
 	type NavLink = {
 		label: string;
@@ -203,10 +204,10 @@
 
 <div class="overflow-x-clip">
 	<header
-		class="fixed inset-x-0 top-0 z-50 border-b border-outline-variant/35 bg-background/85 supports-[backdrop-filter]:bg-background/70 supports-[backdrop-filter]:backdrop-blur-xl"
+		class="fixed inset-x-0 top-0 z-50 border-b border-border-subtle bg-surface-page/85 supports-[backdrop-filter]:bg-surface-page/70 supports-[backdrop-filter]:backdrop-blur-xl"
 	>
-		<nav class="site-frame flex h-20 items-center justify-between font-headline tracking-tight">
-			<a href="#top" class="text-2xl font-semibold text-primary">John Gates</a>
+		<Container tag="nav" class="flex h-[var(--ds-layout-nav-height)] items-center justify-between font-display tracking-tight">
+			<a href="#top" class="text-2xl font-semibold text-text-accent">John Gates</a>
 
 			<div class="hidden items-center gap-8 md:flex">
 				{#each navLinks as link}
@@ -214,25 +215,22 @@
 						href={link.href}
 						class={`pb-1 text-base transition-all ${
 							link.highlight
-								? 'border-b-2 border-primary font-bold text-primary'
-								: 'font-medium text-primary-container hover:text-primary'
+								? 'border-b-2 border-action-primary font-bold text-text-accent'
+								: 'font-medium text-text-muted hover:text-text-accent'
 						}`}
 					>
 						{link.label}
 					</a>
 				{/each}
 
-				<a
-					href="#contact"
-					class="rounded-md bg-primary px-6 py-2.5 font-body text-sm font-semibold tracking-[0.08em] text-on-primary hover:bg-primary-container active:scale-95"
-				>
+				<Button href="#contact" size="sm">
 					Get a Quote
-				</a>
+				</Button>
 			</div>
 
 			<button
 				type="button"
-				class="inline-flex items-center justify-center text-primary md:hidden"
+				class="inline-flex items-center justify-center text-text-accent md:hidden"
 				aria-label={mobileNavOpen ? 'Close navigation' : 'Open navigation'}
 				aria-expanded={mobileNavOpen}
 				onclick={() => (mobileNavOpen = !mobileNavOpen)}
@@ -241,29 +239,25 @@
 					{mobileNavOpen ? 'close' : 'menu'}
 				</span>
 			</button>
-		</nav>
+		</Container>
 
 		{#if mobileNavOpen}
-			<div class="border-t border-outline-variant/30 bg-background/95 md:hidden">
-				<div class="site-frame flex flex-col gap-5 py-6">
+			<div class="border-t border-border-subtle bg-surface-page/95 md:hidden">
+				<Container class="flex flex-col gap-5 py-6">
 					{#each navLinks as link}
 						<a
 							href={link.href}
-							class="font-headline text-xl text-primary"
+							class="font-display text-xl text-text-accent"
 							onclick={() => (mobileNavOpen = false)}
 						>
 							{link.label}
 						</a>
 					{/each}
 
-					<a
-						href="#contact"
-						class="inline-flex w-fit items-center rounded-md bg-primary px-5 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-on-primary"
-						onclick={() => (mobileNavOpen = false)}
-					>
+					<Button href="#contact" size="sm" class="w-fit" onclick={() => (mobileNavOpen = false)}>
 						Get a Quote
-					</a>
-				</div>
+					</Button>
+				</Container>
 			</div>
 		{/if}
 	</header>
@@ -280,45 +274,39 @@
 						fetchpriority="high"
 						decoding="async"
 					/>
-					<div class="absolute inset-0 bg-gradient-to-r from-background/95 via-background/55 to-transparent"></div>
+					<div class="absolute inset-0 bg-gradient-to-r from-surface-page/95 via-surface-page/55 to-transparent"></div>
 				</div>
 
-				<div class="site-frame relative z-10">
+				<Container class="relative z-10">
 					<div class="max-w-2xl">
-						<span class="eyebrow mb-6 inline-block">Established 1974</span>
-						<h1 class="max-w-[14ch] font-headline text-5xl leading-[1.05] text-primary italic sm:text-6xl lg:text-8xl">
+						<span class="ds-eyebrow mb-6 inline-block">Established 1974</span>
+						<h1 class="ds-display-copy max-w-[14ch] font-display text-text-accent italic">
 							Custom cabinetry built the old-fashioned way.
 						</h1>
-						<p class="mt-8 max-w-xl text-lg leading-relaxed text-on-surface-variant sm:text-xl">
+						<p class="ds-intro-copy mt-8 max-w-xl text-text-muted">
 							Kitchens, built-ins, vanities, and finish work made with care, experience,
 							and a close eye for fit.
 						</p>
 						<div class="mt-10 flex flex-col gap-4 sm:flex-row">
-							<a
-								href="#contact"
-								class="group inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-10 py-4 font-semibold text-on-primary shadow-xl shadow-primary/10 hover:bg-primary-container active:scale-[0.98]"
-							>
+							<Button href="#contact" size="lg" class="group shadow-button">
 								Talk About Your Project
 								<span class="material-symbols-outlined transition-transform group-hover:translate-x-1">
 									arrow_forward
 								</span>
-							</a>
-							<a
-								href="#portfolio"
-								class="inline-flex items-center justify-center rounded-lg border border-outline-variant/40 bg-surface-container-low px-10 py-4 font-semibold text-primary hover:bg-surface-container"
-							>
+							</Button>
+							<Button href="#portfolio" variant="secondary" size="lg">
 								See the Work
-							</a>
+							</Button>
 						</div>
 					</div>
-				</div>
+				</Container>
 			</div>
 		</section>
 
-		<section id="about" class="bg-surface py-24 md:py-32">
-			<div class="site-frame grid grid-cols-1 items-center gap-16 md:grid-cols-2">
+		<section id="about" class="bg-surface-section py-[var(--ds-layout-section-y)]">
+			<Container class="grid grid-cols-1 items-center gap-16 md:grid-cols-2">
 				<div class="relative">
-					<div class="aspect-[4/5] overflow-hidden rounded-lg shadow-2xl shadow-primary/10">
+					<div class="aspect-[4/5] overflow-hidden rounded-lg shadow-[var(--ds-shadow-card-hover)]">
 							<img
 								class="h-full w-full object-cover"
 								src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOHvPav_rdd3G2jS0RCN3nhD5dzZV74cAL5c6QdLXycz896KnHOIXrDVNLWX4omEnu4m_nsKvueQY9DKXt_QT2TJV7OsgDg--ZHCyM9aoPmPxrSJ5PaRbHp3QSm0DOFYdXSY5w4zapg5QPw9-HNP3XV9QM-FPN3lcA-egYuvnK8PAxoX571O44xjVTUEGpaeaevxlFxRiKVlWhzp9V4BUnhUMJ0tmCiTrDSxfrNwVfTnH9rjNtkf3XBuWqKcFNa1-nNRr8cRhd7bOR"
@@ -328,77 +316,66 @@
 							/>
 					</div>
 					<div
-						class="absolute -bottom-8 -right-2 hidden max-w-[240px] rounded-lg bg-tertiary p-8 shadow-xl lg:block"
+						class="absolute -bottom-8 -right-2 hidden max-w-[240px] rounded-lg bg-action-tertiary p-8 shadow-xl lg:block"
 					>
-						<p class="mb-2 font-headline text-4xl italic text-on-tertiary">50 Years</p>
-						<p class="text-sm uppercase tracking-[0.18em] text-on-tertiary/80">
+						<p class="mb-2 font-display text-4xl italic text-text-on-tertiary">50 Years</p>
+						<p class="text-sm uppercase tracking-[0.18em] text-text-on-tertiary/80">
 							of master construction excellence
 						</p>
 					</div>
 				</div>
 
 				<div class="space-y-8">
-					<h2 class="section-title not-italic">A lifetime in the trade</h2>
-					<p class="text-lg leading-relaxed text-on-surface-variant">
-						John Gates has spent 50 years in construction, with the last two decades focused
-						on custom cabinetry. That kind of time in the trade teaches you what lasts and
-						what does not.
-					</p>
-					<p class="text-lg leading-relaxed text-on-surface-variant">
+					<SectionHeader
+						title="A lifetime in the trade"
+						intro="John Gates has spent 50 years in construction, with the last two decades focused on custom cabinetry. That kind of time in the trade teaches you what lasts and what does not."
+						class="max-w-xl"
+					/>
+					<p class="text-lg leading-relaxed text-text-muted">
 						He works closely with homeowners from the first conversation through the final
 						install, keeping the process clear and the work honest.
 					</p>
 					<div class="pt-4">
-						<div class="flex items-center gap-4 font-headline text-xl italic text-primary">
-							<span class="h-px w-12 bg-outline-variant"></span>
+						<div class="flex items-center gap-4 font-display text-xl italic text-text-accent">
+							<span class="h-px w-12 bg-border-default"></span>
 							Good work should feel solid the day it goes in and ten years later.
 						</div>
 					</div>
 				</div>
-			</div>
+			</Container>
 		</section>
 
-		<section class="bg-surface-container-low py-24">
-			<div class="site-frame mb-16 text-center">
-				<h2 class="section-title">Why people hire John</h2>
-				<div class="mx-auto mt-4 h-px w-20 bg-primary/20"></div>
-			</div>
-
-			<div class="site-frame grid grid-cols-1 gap-8 md:grid-cols-3">
+		<section class="bg-surface-muted py-[var(--ds-layout-section-y)]">
+			<Container>
+				<SectionHeader title="Why people hire John" align="center" class="mb-16" />
+				<div class="grid grid-cols-1 gap-8 md:grid-cols-3">
 				{#each valueCards as card}
-					<article
-						class="group rounded-xl bg-surface p-10 shadow-sm ring-1 ring-outline-variant/20 transition-shadow hover:shadow-md"
-					>
-						<div
-							class="mb-8 flex h-16 w-16 items-center justify-center rounded-full bg-secondary-container transition-transform group-hover:scale-110"
-						>
-							<span class="material-symbols-outlined text-3xl text-secondary">{card.icon}</span>
-						</div>
-						<h3 class="mb-4 font-headline text-2xl text-primary">{card.title}</h3>
-						<p class="leading-relaxed text-on-surface-variant">{card.copy}</p>
-					</article>
+					<Card>
+						{#snippet icon()}
+							<span class="material-symbols-outlined text-3xl">{card.icon}</span>
+						{/snippet}
+						<h3 class="mb-4 font-display text-2xl text-text-accent">{card.title}</h3>
+						<p class="leading-relaxed text-text-muted">{card.copy}</p>
+					</Card>
 				{/each}
-			</div>
+				</div>
+			</Container>
 		</section>
 
-		<section id="portfolio" class="bg-surface py-24">
-			<div class="site-frame mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-				<div>
-					<h2 class="section-title">Featured Works</h2>
-					<p class="mt-4 text-on-surface-variant">
-						A few recent spaces, each built around the way the home is actually used.
-					</p>
-				</div>
+		<section id="portfolio" class="bg-surface-section py-[var(--ds-layout-section-y)]">
+			<Container class="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+				<SectionHeader
+					title="Featured Works"
+					intro="A few recent spaces, each built around the way the home is actually used."
+					class="max-w-xl"
+				/>
 
-				<a
-					href="#contact"
-					class="border-b border-primary pb-1 font-semibold text-primary hover:opacity-70"
-				>
+				<Button href="#contact" variant="text" size="sm">
 					See More Projects
-				</a>
-			</div>
+				</Button>
+			</Container>
 
-			<div class="site-frame grid grid-cols-1 gap-6 md:h-[800px] md:grid-cols-12">
+			<Container class="grid grid-cols-1 gap-6 md:h-[800px] md:grid-cols-12">
 				<article class="group relative overflow-hidden rounded-lg md:col-span-8">
 					<img
 						class="h-[26rem] w-full object-cover transition-transform duration-700 group-hover:scale-105 md:h-full"
@@ -408,10 +385,10 @@
 						decoding="async"
 					/>
 					<div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent p-8">
-						<span class="mb-2 inline-block rounded bg-secondary px-3 py-1 text-[10px] uppercase tracking-[0.24em] text-white">
+						<span class="mb-2 inline-block rounded bg-action-accent px-3 py-1 text-[10px] uppercase tracking-[0.24em] text-white">
 							{featuredPrimary.category}
 						</span>
-						<h3 class="font-headline text-2xl italic text-white">{featuredPrimary.title}</h3>
+						<h3 class="font-display text-2xl italic text-white">{featuredPrimary.title}</h3>
 					</div>
 				</article>
 
@@ -426,55 +403,58 @@
 								decoding="async"
 							/>
 							<div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent p-6">
-								<span class="mb-2 inline-block rounded bg-secondary px-3 py-1 text-[10px] uppercase tracking-[0.24em] text-white">
+								<span class="mb-2 inline-block rounded bg-action-accent px-3 py-1 text-[10px] uppercase tracking-[0.24em] text-white">
 									{project.category}
 								</span>
-								<h3 class="font-headline text-xl italic text-white">{project.title}</h3>
+								<h3 class="font-display text-xl italic text-white">{project.title}</h3>
 							</div>
 						</article>
 					{/each}
 				</div>
-			</div>
+			</Container>
 		</section>
 
-		<section id="process" class="bg-surface-container-high py-24">
-			<div class="site-frame">
-				<div class="mb-20 text-center">
-					<span class="eyebrow mb-2 block">How We Work</span>
-					<h2 class="section-title">What the process looks like</h2>
-				</div>
+		<section id="process" class="bg-surface-accent py-[var(--ds-layout-section-y)]">
+			<Container>
+				<SectionHeader
+					eyebrow="How We Work"
+					title="What the process looks like"
+					align="center"
+					class="mb-20"
+				/>
 
 				<div class="relative grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-0">
 					<div
-						class="absolute left-0 top-6 hidden h-px w-full bg-outline-variant/40 md:block"
+						class="absolute left-0 top-6 hidden h-px w-full bg-border-default/40 md:block"
 						aria-hidden="true"
 					></div>
 
 					{#each processSteps as step, index}
 						<article class="relative z-10 flex flex-col items-center p-8 text-center">
 							<div
-								class="mb-8 flex h-12 w-12 items-center justify-center rounded-full bg-primary font-headline text-xl text-on-primary"
+								class="mb-8 flex h-12 w-12 items-center justify-center rounded-full bg-action-primary font-display text-xl text-text-on-action"
 							>
 								{index + 1}
 							</div>
-							<h3 class="mb-4 font-headline text-2xl italic text-primary">{step.title}</h3>
-							<p class="max-w-sm text-on-surface-variant">{step.copy}</p>
+							<h3 class="mb-4 font-display text-2xl italic text-text-accent">{step.title}</h3>
+							<p class="max-w-sm text-text-muted">{step.copy}</p>
 						</article>
 					{/each}
 				</div>
-			</div>
+			</Container>
 		</section>
 
-		<section id="contact" class="bg-surface py-24">
+		<section id="contact" class="bg-surface-section py-[var(--ds-layout-section-y)]">
 			<div class="mx-auto max-w-4xl px-6 text-center sm:px-8 lg:px-16">
-				<div class="mb-8 inline-flex items-center justify-center rounded-full bg-tertiary-container/10 p-4">
-					<span class="material-symbols-outlined text-4xl text-tertiary">edit_note</span>
+				<div class="mb-8 inline-flex items-center justify-center rounded-full bg-action-tertiary-soft/10 p-4">
+					<span class="material-symbols-outlined text-4xl text-action-tertiary">edit_note</span>
 				</div>
-				<h2 class="section-title mx-auto max-w-[12ch]">Ready to get started?</h2>
-				<p class="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-on-surface-variant">
-					If you are planning a kitchen, built-in, vanity, or another custom piece, reach out
-					and tell us what you have in mind.
-				</p>
+				<SectionHeader
+					title="Ready to get started?"
+					intro="If you are planning a kitchen, built-in, vanity, or another custom piece, reach out and tell us what you have in mind."
+					align="center"
+					class="mx-auto max-w-3xl"
+				/>
 
 				<form
 					class="mx-auto mt-12 max-w-lg space-y-6 text-left"
@@ -482,65 +462,59 @@
 				>
 					<div>
 						<label class="sr-only" for="name">Your Name</label>
-						<input
+						<Field
 							id="name"
 							name="name"
-							type="text"
 							placeholder="Your Name"
-							class="w-full border-0 border-b border-outline/30 bg-transparent px-0 py-4 text-primary placeholder:text-outline-variant focus:border-primary focus:ring-0"
 						/>
 					</div>
 					<div>
 						<label class="sr-only" for="email">Email Address</label>
-						<input
+						<Field
 							id="email"
 							name="email"
 							type="email"
 							placeholder="Email Address"
-							class="w-full border-0 border-b border-outline/30 bg-transparent px-0 py-4 text-primary placeholder:text-outline-variant focus:border-primary focus:ring-0"
 						/>
 					</div>
 					<div>
 						<label class="sr-only" for="project">Tell us about your project</label>
-						<textarea
+						<Field
+							as="textarea"
 							id="project"
 							name="project"
-							rows="3"
+							rows={3}
 							placeholder="Tell me a little about the job"
-							class="w-full resize-none border-0 border-b border-outline/30 bg-transparent px-0 py-4 text-primary placeholder:text-outline-variant focus:border-primary focus:ring-0"
-						></textarea>
+						/>
 					</div>
-					<button
-						type="submit"
-						class="mt-8 w-full rounded-lg bg-primary py-5 text-sm font-bold uppercase tracking-[0.24em] text-on-primary shadow-lg shadow-primary/10 hover:bg-primary-container active:scale-[0.99]"
-					>
+					<Button type="submit" size="lg" class="mt-8 w-full text-sm uppercase tracking-[0.24em]">
 						Request a Quote
-					</button>
+					</Button>
 				</form>
 			</div>
 		</section>
 	</main>
 
-	<footer class="bg-surface-container">
-		<div
-			class="site-frame flex flex-col items-center justify-between gap-8 py-12 text-center text-sm uppercase tracking-[0.2em] text-primary md:flex-row md:text-left"
+	<footer class="bg-surface-accent">
+		<Container
+			class="flex flex-col items-center justify-between gap-8 py-12 text-center text-sm uppercase tracking-[0.2em] text-text-accent md:flex-row md:text-left"
 		>
 			<div>
-				<p class="font-headline text-lg normal-case tracking-normal text-primary">
+				<p class="font-display text-lg normal-case tracking-normal text-text-accent">
 					John Gates Master Cabinetry
 				</p>
-				<p class="mt-2 text-[10px] tracking-[0.24em] text-primary/75">
+				<p class="mt-2 text-[10px] tracking-[0.24em] text-text-accent/75">
 					&copy; {currentYear} John Gates Master Cabinetry. Built with care since 1974.
 				</p>
 			</div>
 
 			<div class="flex flex-wrap items-center justify-center gap-8">
 				{#each footerLinks as link}
-					<a href={link.href} class="text-primary-container/85 hover:text-primary hover:opacity-100">
+					<a href={link.href} class="text-text-muted hover:text-text-accent hover:opacity-100">
 						{link.label}
 					</a>
 				{/each}
 			</div>
-		</div>
+		</Container>
 	</footer>
 </div>

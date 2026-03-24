@@ -1,0 +1,103 @@
+:root {
+	--ds-color-surface-page: #faf9f8;
+	--ds-color-surface-section: #faf9f8;
+	--ds-color-surface-muted: #f4f3f2;
+	--ds-color-surface-accent: #eeeeed;
+	--ds-color-surface-elevated: #ffffff;
+	--ds-color-surface-inverse: #2f3130;
+
+	--ds-color-text-primary: #1a1c1c;
+	--ds-color-text-muted: #504442;
+	--ds-color-text-inverse: #f1f0f0;
+	--ds-color-text-accent: #32201f;
+	--ds-color-text-on-action: #ffffff;
+	--ds-color-text-on-tertiary: #ffffff;
+
+	--ds-color-action-primary: #32201f;
+	--ds-color-action-primary-hover: #493634;
+	--ds-color-action-secondary: #f4f3f2;
+	--ds-color-action-outline: #d4c3bf;
+	--ds-color-action-accent: #4c616c;
+	--ds-color-action-accent-soft: #cfe6f2;
+	--ds-color-action-tertiary: #332107;
+	--ds-color-action-tertiary-soft: #4c361a;
+
+	--ds-color-border-subtle: rgb(212 195 191 / 0.35);
+	--ds-color-border-default: #d4c3bf;
+	--ds-color-border-strong: #827471;
+
+	--ds-color-selection-bg: #fadcd8;
+	--ds-color-selection-text: #281716;
+
+	--ds-font-display: 'Newsreader', serif;
+	--ds-font-body: 'Manrope', sans-serif;
+
+	--ds-type-display-size: clamp(3rem, 8vw, 6rem);
+	--ds-type-heading-size: clamp(2.25rem, 4vw, 3.25rem);
+	--ds-type-body-size: 1rem;
+	--ds-type-intro-size: clamp(1.125rem, 2vw, 1.25rem);
+	--ds-type-label-size: 0.875rem;
+	--ds-type-small-label-size: 0.75rem;
+
+	--ds-layout-page-max: 96rem;
+	--ds-layout-nav-height: 5rem;
+	--ds-layout-gutter-sm: 1.5rem;
+	--ds-layout-gutter-md: 2rem;
+	--ds-layout-gutter-lg: 4rem;
+	--ds-layout-section-y: clamp(6rem, 8vw, 8rem);
+
+	--ds-radius-sm: 0.125rem;
+	--ds-radius-md: 0.25rem;
+	--ds-radius-lg: 0.5rem;
+	--ds-radius-xl: 0.75rem;
+
+	--ds-shadow-card: 0 18px 48px -30px rgb(50 32 31 / 0.24);
+	--ds-shadow-card-hover: 0 24px 64px -34px rgb(50 32 31 / 0.32);
+	--ds-shadow-button: 0 18px 40px -24px rgb(50 32 31 / 0.26);
+
+	--ds-motion-fast: 150ms;
+	--ds-motion-base: 220ms;
+	--ds-motion-slow: 320ms;
+	--ds-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@theme {
+	--color-surface-page: var(--ds-color-surface-page);
+	--color-surface-section: var(--ds-color-surface-section);
+	--color-surface-muted: var(--ds-color-surface-muted);
+	--color-surface-accent: var(--ds-color-surface-accent);
+	--color-surface-elevated: var(--ds-color-surface-elevated);
+	--color-surface-inverse: var(--ds-color-surface-inverse);
+
+	--color-text-primary: var(--ds-color-text-primary);
+	--color-text-muted: var(--ds-color-text-muted);
+	--color-text-inverse: var(--ds-color-text-inverse);
+	--color-text-accent: var(--ds-color-text-accent);
+	--color-text-on-action: var(--ds-color-text-on-action);
+	--color-text-on-tertiary: var(--ds-color-text-on-tertiary);
+
+	--color-action-primary: var(--ds-color-action-primary);
+	--color-action-primary-hover: var(--ds-color-action-primary-hover);
+	--color-action-secondary: var(--ds-color-action-secondary);
+	--color-action-outline: var(--ds-color-action-outline);
+	--color-action-accent: var(--ds-color-action-accent);
+	--color-action-accent-soft: var(--ds-color-action-accent-soft);
+	--color-action-tertiary: var(--ds-color-action-tertiary);
+	--color-action-tertiary-soft: var(--ds-color-action-tertiary-soft);
+
+	--color-border-subtle: var(--ds-color-border-subtle);
+	--color-border-default: var(--ds-color-border-default);
+	--color-border-strong: var(--ds-color-border-strong);
+
+	--font-display: var(--ds-font-display);
+	--font-body: var(--ds-font-body);
+
+	--radius-sm: var(--ds-radius-sm);
+	--radius-md: var(--ds-radius-md);
+	--radius-lg: var(--ds-radius-lg);
+	--radius-xl: var(--ds-radius-xl);
+
+	--shadow-card: var(--ds-shadow-card);
+	--shadow-card-hover: var(--ds-shadow-card-hover);
+	--shadow-button: var(--ds-shadow-button);
+}

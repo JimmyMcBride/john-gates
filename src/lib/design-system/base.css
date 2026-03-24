@@ -1,0 +1,182 @@
+@layer base {
+	html {
+		background-color: var(--ds-color-surface-page);
+	}
+
+	body {
+		min-height: 100vh;
+		background:
+			radial-gradient(circle at top, rgb(250 220 216 / 0.32), transparent 34%),
+			linear-gradient(180deg, var(--ds-color-surface-page) 0%, var(--ds-color-surface-muted) 100%);
+		color: var(--ds-color-text-primary);
+		font-family: var(--ds-font-body);
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	img {
+		display: block;
+	}
+
+	section[id] {
+		scroll-margin-top: calc(var(--ds-layout-nav-height) + 1rem);
+	}
+
+	a,
+	button {
+		transition:
+			background-color var(--ds-motion-fast) var(--ds-ease-out),
+			border-color var(--ds-motion-fast) var(--ds-ease-out),
+			color var(--ds-motion-fast) var(--ds-ease-out),
+			opacity var(--ds-motion-fast) var(--ds-ease-out),
+			transform var(--ds-motion-fast) var(--ds-ease-out),
+			box-shadow var(--ds-motion-fast) var(--ds-ease-out);
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--ds-color-action-primary);
+		outline-offset: 3px;
+	}
+
+	::selection {
+		background-color: var(--ds-color-selection-bg);
+		color: var(--ds-color-selection-text);
+	}
+}
+
+@layer components {
+	.ds-container {
+		@apply mx-auto w-full max-w-[var(--ds-layout-page-max)] px-[var(--ds-layout-gutter-sm)] sm:px-[var(--ds-layout-gutter-md)] lg:px-[var(--ds-layout-gutter-lg)];
+	}
+
+	.ds-eyebrow {
+		color: var(--ds-color-text-accent);
+		font-family: var(--ds-font-body);
+		font-size: var(--ds-type-small-label-size);
+		font-weight: 700;
+		letter-spacing: 0.24em;
+		line-height: 1.25;
+		text-transform: uppercase;
+	}
+
+	.ds-section-header {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.ds-section-header--center {
+		align-items: center;
+		text-align: center;
+	}
+
+	.ds-section-header--center .ds-section-intro {
+		margin-inline: auto;
+		max-width: 42rem;
+	}
+
+	.ds-section-header--left {
+		align-items: flex-start;
+		text-align: left;
+	}
+
+	.ds-section-title {
+		color: var(--ds-color-text-accent);
+		font-family: var(--ds-font-display);
+		font-size: var(--ds-type-heading-size);
+		line-height: 1.05;
+	}
+
+	.ds-section-intro {
+		color: var(--ds-color-text-muted);
+		font-size: var(--ds-type-intro-size);
+		line-height: 1.7;
+	}
+
+	.ds-display-copy {
+		font-size: var(--ds-type-display-size);
+		line-height: 1.05;
+	}
+
+	.ds-intro-copy {
+		font-size: var(--ds-type-intro-size);
+		line-height: 1.625;
+	}
+
+	.ds-button {
+		align-items: center;
+		border-radius: var(--ds-radius-lg);
+		display: inline-flex;
+		font-family: var(--ds-font-body);
+		font-weight: 600;
+		gap: 0.5rem;
+		justify-content: center;
+		line-height: 1;
+		white-space: nowrap;
+	}
+
+	.ds-button--sm {
+		font-size: 0.875rem;
+		letter-spacing: 0.08em;
+		padding: 0.75rem 1.5rem;
+	}
+
+	.ds-button--md {
+		font-size: 0.95rem;
+		padding: 1rem 2rem;
+	}
+
+	.ds-button--lg {
+		font-size: 0.95rem;
+		padding: 1.25rem 2.5rem;
+	}
+
+	.ds-button--primary {
+		background-color: var(--ds-color-action-primary);
+		box-shadow: var(--ds-shadow-button);
+		color: var(--ds-color-text-on-action);
+	}
+
+	.ds-button--primary:hover {
+		background-color: var(--ds-color-action-primary-hover);
+	}
+
+	.ds-button--secondary {
+		background-color: var(--ds-color-action-secondary);
+		border: 1px solid color-mix(in srgb, var(--ds-color-action-outline) 65%, transparent);
+		color: var(--ds-color-text-accent);
+	}
+
+	.ds-button--secondary:hover {
+		background-color: var(--ds-color-surface-accent);
+	}
+
+	.ds-button--text {
+		border-bottom: 1px solid var(--ds-color-action-primary);
+		border-radius: 0;
+		color: var(--ds-color-text-accent);
+		padding: 0 0 0.35rem;
+	}
+
+	.ds-button--text:hover {
+		opacity: 0.72;
+	}
+
+	.ds-card {
+		@apply rounded-xl bg-surface-elevated p-10 ring-1 ring-border-subtle shadow-card transition-shadow duration-200 hover:shadow-card-hover;
+	}
+
+	.ds-card__icon {
+		@apply mb-8 flex h-16 w-16 items-center justify-center rounded-full bg-action-accent-soft text-action-accent transition-transform duration-200;
+	}
+
+	.group:hover .ds-card__icon {
+		transform: scale(1.1);
+	}
+
+	.ds-field {
+		@apply w-full border-0 border-b border-border-default bg-transparent px-0 py-4 text-text-accent placeholder:text-text-muted focus:border-action-primary focus:ring-0;
+		font-family: var(--ds-font-body);
+	}
+}
