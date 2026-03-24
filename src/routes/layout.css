@@ -1,0 +1,98 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+
+@theme {
+	--color-background: #faf9f8;
+	--color-surface: #faf9f8;
+	--color-surface-container-lowest: #ffffff;
+	--color-surface-container-low: #f4f3f2;
+	--color-surface-container: #eeeeed;
+	--color-surface-container-high: #e9e8e7;
+	--color-surface-container-highest: #e3e2e1;
+	--color-surface-variant: #e3e2e1;
+	--color-surface-tint: #705957;
+	--color-primary: #32201f;
+	--color-primary-container: #493634;
+	--color-primary-fixed: #fadcd8;
+	--color-secondary: #4c616c;
+	--color-secondary-container: #cfe6f2;
+	--color-tertiary: #332107;
+	--color-tertiary-container: #4c361a;
+	--color-outline: #827471;
+	--color-outline-variant: #d4c3bf;
+	--color-on-background: #1a1c1c;
+	--color-on-surface: #1a1c1c;
+	--color-on-surface-variant: #504442;
+	--color-on-primary: #ffffff;
+	--color-on-primary-fixed: #281716;
+	--color-on-tertiary: #ffffff;
+	--font-headline: 'Newsreader', serif;
+	--font-body: 'Manrope', sans-serif;
+	--radius-sm: 0.125rem;
+	--radius-md: 0.25rem;
+	--radius-lg: 0.5rem;
+	--radius-xl: 0.75rem;
+}
+
+@layer base {
+	html {
+		background-color: var(--color-background);
+	}
+
+	body {
+		min-height: 100vh;
+		background:
+			radial-gradient(circle at top, rgb(250 220 216 / 0.32), transparent 34%),
+			linear-gradient(180deg, #faf9f8 0%, #f4f3f2 100%);
+		color: var(--color-on-background);
+		font-family: var(--font-body);
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	section[id] {
+		scroll-margin-top: 6rem;
+	}
+
+	img {
+		display: block;
+	}
+
+	a,
+	button {
+		transition:
+			background-color 150ms ease,
+			border-color 150ms ease,
+			color 150ms ease,
+			opacity 150ms ease,
+			transform 150ms ease;
+	}
+
+	::selection {
+		background-color: var(--color-primary-fixed);
+		color: var(--color-on-primary-fixed);
+	}
+}
+
+@layer components {
+	.site-frame {
+		@apply mx-auto w-full max-w-[96rem] px-6 sm:px-8 lg:px-16;
+	}
+
+	.eyebrow {
+		@apply text-xs font-semibold uppercase tracking-[0.24em] text-primary sm:text-sm;
+	}
+
+	.section-title {
+		@apply font-headline text-4xl leading-tight text-primary italic sm:text-5xl;
+	}
+}
+
+.material-symbols-outlined {
+	font-variation-settings:
+		'FILL' 0,
+		'wght' 300,
+		'GRAD' 0,
+		'opsz' 24;
+}
