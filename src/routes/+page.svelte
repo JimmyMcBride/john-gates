@@ -299,7 +299,7 @@
 
 <div class="overflow-x-clip">
 	<header
-		class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-action-primary/92 supports-[backdrop-filter]:bg-action-primary/84 supports-[backdrop-filter]:backdrop-blur-xl"
+		class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-action-primary-deep supports-[backdrop-filter]:bg-action-primary-deep/92 supports-[backdrop-filter]:backdrop-blur-xl"
 	>
 		<Container tag="nav" class="flex h-[var(--ds-layout-nav-height)] items-center justify-between font-display tracking-tight">
 			<a href="#top" class="text-2xl font-semibold text-text-on-action">John Gates</a>
@@ -337,7 +337,7 @@
 		</Container>
 
 		{#if mobileNavOpen}
-			<div class="border-t border-white/10 bg-action-primary/96 md:hidden">
+			<div class="border-t border-white/10 bg-action-primary-deep/96 md:hidden">
 				<Container class="flex flex-col gap-5 py-6">
 					{#each navLinks as link}
 						<a
@@ -369,7 +369,7 @@
 						fetchpriority="high"
 						decoding="async"
 					/>
-					<div class="absolute inset-0 bg-gradient-to-r from-[#fff1d6]/68 via-[#f3d9a6]/20 to-transparent"></div>
+					<div class="absolute inset-0 bg-gradient-to-r from-[#fff1d6]/86 via-[#f3d9a6]/38 to-transparent"></div>
 				</div>
 
 				<Container class="relative z-10">
@@ -378,7 +378,7 @@
 						<h1 class="ds-display-copy max-w-[14ch] font-display text-text-accent italic">
 							Custom cabinetry built the old-fashioned way.
 						</h1>
-						<p class="ds-intro-copy mt-8 max-w-xl text-text-muted">
+						<p class="ds-intro-copy mt-8 max-w-xl font-semibold text-text-muted">
 							Kitchens, built-ins, vanities, and finish work made with care, experience,
 							and a close eye for fit.
 						</p>
